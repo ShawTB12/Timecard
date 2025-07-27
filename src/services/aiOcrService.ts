@@ -5,13 +5,17 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY || '';
 const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY || '';
 
-// デバッグ用：環境変数の確認
-console.log('環境変数デバッグ:', {
-  OPENAI_KEY_EXISTS: !!OPENAI_API_KEY,
-  GEMINI_KEY_EXISTS: !!GEMINI_API_KEY,
-  OPENAI_KEY_PREFIX: OPENAI_API_KEY ? OPENAI_API_KEY.substring(0, 10) + '...' : 'なし',
-  ALL_ENV_VARS: Object.keys(process.env).filter(key => key.startsWith('REACT_APP_'))
-});
+// デバッグ用：環境変数の確認（Vercel対応）
+console.log('=== 環境変数デバッグ（Vercel） ===');
+console.log('REACT_APP_OPENAI_API_KEY exists:', !!process.env.REACT_APP_OPENAI_API_KEY);
+console.log('REACT_APP_GEMINI_API_KEY exists:', !!process.env.REACT_APP_GEMINI_API_KEY);
+console.log('OPENAI_API_KEY length:', OPENAI_API_KEY ? OPENAI_API_KEY.length : 0);
+console.log('GEMINI_API_KEY length:', GEMINI_API_KEY ? GEMINI_API_KEY.length : 0);
+console.log('OPENAI_API_KEY prefix:', OPENAI_API_KEY ? OPENAI_API_KEY.substring(0, 15) + '...' : 'なし');
+console.log('GEMINI_API_KEY prefix:', GEMINI_API_KEY ? GEMINI_API_KEY.substring(0, 15) + '...' : 'なし');
+console.log('Node ENV:', process.env.NODE_ENV);
+console.log('Available REACT_APP env vars:', Object.keys(process.env).filter(key => key.startsWith('REACT_APP_')));
+console.log('================================');
 
 // AIモデルの選択肢
 export type AIModel = 'gpt4' | 'gemini';

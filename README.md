@@ -68,6 +68,32 @@ npm start
 npm run build
 ```
 
+## 🌐 Vercelデプロイ方法
+
+### 1. **Vercelに自動デプロイ**
+```bash
+# GitHubリポジトリをVercelに接続
+# https://vercel.com でプロジェクトをインポート
+```
+
+### 2. **環境変数設定（重要）**
+Vercel Dashboard → Project Settings → Environment Variables で以下を設定：
+
+| 環境変数名 | 値の例 | 説明 |
+|-----------|--------|------|
+| `REACT_APP_OPENAI_API_KEY` | `sk-proj-...` | OpenAI APIキー |
+| `REACT_APP_GEMINI_API_KEY` | `AIzaSy...` | Google Gemini APIキー |
+
+**⚠️ 重要な手順:**
+1. 環境変数は **All Environments** または **Production** に設定
+2. 環境変数名は **大文字小文字を正確に** 入力
+3. **設定後は必ずRedeploy（再デプロイ）を実行**
+
+### 3. **デプロイ確認**
+- ブラウザの開発者ツール（F12）でコンソールを確認
+- 「=== 環境変数デバッグ（Vercel） ===」のログを確認
+- APIキーが正常に読み込まれているかチェック
+
 ## 📝 操作手順
 
 1. **画像アップロード**: タイムカード画像をドラッグ&ドロップまたはファイル選択
